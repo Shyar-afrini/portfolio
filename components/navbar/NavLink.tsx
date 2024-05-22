@@ -11,7 +11,7 @@ const NavLink = ({
 }: {
   href: string;
   title: string;
-  setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  setMenuOpen?: Dispatch<SetStateAction<boolean>>;
 }) => {
   const [displayText, setDisplayText] = useState(title);
   const isInProgress = useRef(false);
@@ -50,7 +50,7 @@ const NavLink = ({
         onMouseEnter={handleMouseEnter}
         onClick={() =>
           setTimeout(() => {
-            setMenuOpen(false);
+            setMenuOpen && setMenuOpen(false);
           }, 500)
         }
         className="hover:brightness-125 transition-all duration-200 ease-in-out"
