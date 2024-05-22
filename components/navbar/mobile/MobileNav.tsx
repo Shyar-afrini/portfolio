@@ -55,7 +55,11 @@ const MobileNav = () => {
         width={24}
         height={24}
       />
-      <SlideMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <SlideMenu
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        scrollHeight={scrollHeight}
+      />
     </motion.div>
   );
 };
@@ -63,9 +67,11 @@ const MobileNav = () => {
 const SlideMenu = ({
   menuOpen,
   setMenuOpen,
+  scrollHeight,
 }: {
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  scrollHeight: number;
 }) => {
   const variants = {
     open: { x: 0, opacity: 1 },
@@ -97,7 +103,7 @@ const SlideMenu = ({
     menuOpen && (
       <motion.div
         ref={menuRef}
-        className={`gap-8 text-5xl text-primary font-semibold bg-accent w-[90%] h-full fixed top-0 right-0 px-container pt-14`}
+        className={`gap-8 text-5xl text-primary font-semibold bg-accent w-[90%] h-full fixed top-0 right-0 px-container ${scrollHeight > 800 ? "pt-6" : "pt-14"}`}
         initial="closed"
         animate="open"
         exit="closed"

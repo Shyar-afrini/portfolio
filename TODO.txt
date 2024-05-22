@@ -1,0 +1,2 @@
+- Truncate the tech and add show more and show less button 
+- Add sliding animations to the hero section picture

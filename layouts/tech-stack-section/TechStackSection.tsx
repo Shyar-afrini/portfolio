@@ -1,74 +1,58 @@
-import React from "react";
+"use client";
+
+import {
+  backendTech,
+  frontendTech,
+  languagesAndPrograms,
+} from "@/utils/techArray";
+import { useState } from "react";
 
 const TechStackCard = ({ title }: { title: string }) => {
   return (
-    <div className="w-fit min-w-52 py-2 px-16 flex-grow border-l-8 border-accent rounded-[4px] bg-secondary text-center text-lg border border-t-accent/60 border-b-accent/60 border-r-accent/60">
+    <div className="w-fit min-w-56 py-2 px-16 flex-grow border-l-8 border-accent rounded-[4px] bg-secondary text-center text-lg border border-t-accent/60 border-b-accent/60 border-r-accent/60">
       {title}
     </div>
   );
 };
 
 const TechGroup = ({ tech, title }: { tech: string[]; title: string }) => {
+  const [expand, setExpand] = useState(false);
+  const sliceNumber =
+    window && window.innerWidth < 800 ? (expand ? tech.length : 4) : tech.length;
+
+  const handleExpand = () => {
+    setExpand((prev) => !prev);
+  };
+
   return (
-    <div>
-      <h1 className="text-text/80 text-2xl pb-4">{title}</h1>
-      <div className="flex flex-wrap flex-shrink gap-2 w-full">
-        {tech.map((tech: string, index: number) => (
+    <div className="flex flex-col gap-4">
+      <h1 className="text-text/80 text-2xl">{title}</h1>
+      <div className="flex flex-wrap gap-2 w-full">
+        {tech.slice(0, sliceNumber).map((tech, index) => (
           <TechStackCard title={tech} key={index} />
         ))}
       </div>
+      <button
+        hidden={window.innerWidth > 800}
+        onClick={handleExpand}
+        className="w-full h-12 hover:opacity-80 bg-accent rounded-corner text-primary font-semibold text-xl transition-all duration-300 ease-in-out"
+      >
+        {expand ? "Show less" : "Show more"}
+      </button>
     </div>
   );
 };
 
 const TechStackSection = () => {
-  const frontendTech = [
-    "expo",
-    "tailwind",
-    "framer motion",
-    "react native",
-    "javascript",
-    "html",
-    "css",
-    "typescript",
-    "react",
-    "nextjs",
-    "shadcn/ui",
-  ];
-
-  const backendTech = [
-    "knex.js",
-    "mssql",
-    "firebase",
-    "railway",
-    "node.js",
-    "cors",
-    "mysql",
-    "postgresql",
-    "express.js",
-  ];
-
-  const languagesAndPrograms = [
-    "vscode",
-    "git",
-    "figma",
-    "postman",
-    "flstudio",
-    "ngrok",
-    "python",
-    "c++",
-    "photoshop",
-  ];
-
   return (
     <div className="w-screen h-full px-container flex flex-col gap-4 pb-20">
-      <h1 className="text-title">tech stack</h1>
+      <h1 className="text-title">Tech Stack</h1>
       <div className="flex flex-col gap-8 w-full">
-        <TechGroup tech={frontendTech} title="front end developemnt" />
-        <TechGroup tech={backendTech} title="back end developemnt" />
+        <TechGroup tech={frontendTech} title="Front End Development" />
+        <TechGroup tech={backendTech} title="Back End Development" />
         <TechGroup
           tech={languagesAndPrograms}
-          title="other languages & programs"
+          title="Other Languages & Programs"
         />
       </div>
     </div>

@@ -5,13 +5,13 @@ import Globe from "@/public/assets/globe.svg";
 
 const AboutContainer = () => {
   return (
-    <div id="about" className="w-screen h-full pb-20 bg-accent relative">
+    <div id="about" className="w-screen h-full min-h-[90vh] pb-20 bg-accent relative flex flex-col gap-12">
       <Image
         src={SineWave}
         alt="sine"
         className="z-30 w-screen drop-shadow-xl shadow-primary"
       />
-      <div className="w-full h-fit px-container flex gap-10 items-center justify-between pt-[10%]">
+      <div className="w-full h-full px-container flex gap-10 justify-between pt-[5%]">
         <div className="flex flex-col gap-4">
           <h1 className="text-title font-semibold text-secondary">about me</h1>
           <p className="text-secondary/90 font-normal text-paragraph leading-paragraph w-full lg:max-w-3xl text-justify">

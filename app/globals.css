@@ -10,11 +10,11 @@ html {
   scroll-behavior: smooth;
   background-color: #121212;
   color: #c3c3c3;
-  text-transform: uppercase;
 }
 
 * {
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 ::-webkit-scrollbar {
