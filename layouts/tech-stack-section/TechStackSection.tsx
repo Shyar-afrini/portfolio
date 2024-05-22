@@ -1,11 +1,11 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import {
   backendTech,
   frontendTech,
   languagesAndPrograms,
 } from "@/utils/techArray";
-import { useState } from "react";
 
 const TechStackCard = ({ title }: { title: string }) => {
   return (
@@ -17,8 +17,20 @@ const TechStackCard = ({ title }: { title: string }) => {
 
 const TechGroup = ({ tech, title }: { tech: string[]; title: string }) => {
   const [expand, setExpand] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsClient(true);
+    }
+  }, []);
+
   const sliceNumber =
-    window && window.innerWidth < 800 ? (expand ? tech.length : 4) : tech.length;
+    isClient && window.innerWidth < 800
+      ? expand
+        ? tech.length
+        : 4
+      : tech.length;
 
   const handleExpand = () => {
     setExpand((prev) => !prev);
@@ -32,13 +44,14 @@ const TechGroup = ({ tech, title }: { tech: string[]; title: string }) => {
           <TechStackCard title={tech} key={index} />
         ))}
       </div>
-      <button
-        hidden={window.innerWidth > 800}
-        onClick={handleExpand}
-        className="w-full h-12 hover:opacity-80 bg-accent rounded-corner text-primary font-semibold text-xl transition-all duration-300 ease-in-out"
-      >
-        {expand ? "Show less" : "Show more"}
-      </button>
+      {isClient && window.innerWidth < 800 && (
+        <button
+          onClick={handleExpand}
+          className="w-full h-12 hover:opacity-80 bg-accent rounded-corner text-primary font-semibold text-xl transition-all duration-300 ease-in-out"
+        >
+          {expand ? "Show less" : "Show more"}
+        </button>
+      )}
     </div>
   );
 };
