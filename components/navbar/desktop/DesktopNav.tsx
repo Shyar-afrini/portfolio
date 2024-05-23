@@ -4,11 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import NavLink from "../NavLink";
 
-const DownloadCV = () => {
+export const DownloadCV = () => {
   return (
-    <div className="text-xl bg-secondary rounded-corner px-8 py-2 cursor-pointer hover:bg-accent hover:text-primary font-[500] transition-all duration-300 ease-in-out ">
+    <a
+      href={"/assets/portfolio.pdf"}
+      download={"shyar-afrini.pdf"}
+      className="text-xl bg-secondary rounded-corner px-8 py-2 cursor-pointer hover:bg-accent hover:text-primary font-[500] transition-all duration-300 ease-in-out "
+    >
       download cv
-    </div>
+    </a>
   );
 };
 

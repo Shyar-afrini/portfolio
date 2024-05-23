@@ -18,7 +18,7 @@ const backendTech = [
   "firebase",
   "railway",
   "node.js",
-  "cors",
+  "hygraph(cms)",
   "mysql",
   "postgresql",
   "express.js",

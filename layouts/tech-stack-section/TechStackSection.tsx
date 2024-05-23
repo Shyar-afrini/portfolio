@@ -58,7 +58,10 @@ const TechGroup = ({ tech, title }: { tech: string[]; title: string }) => {
 
 const TechStackSection = () => {
   return (
-    <div className="w-screen h-full px-container flex flex-col gap-4 pb-20">
+    <div
+      id="tech-stack"
+      className="w-screen h-full px-container flex flex-col gap-4 pb-20"
+    >
       <h1 className="text-title">Tech Stack</h1>
       <div className="flex flex-col gap-8 w-full">
         <TechGroup tech={frontendTech} title="Front End Development" />

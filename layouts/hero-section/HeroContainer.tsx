@@ -35,7 +35,7 @@ const HeroTitle = ({ title }: { title: string }) => {
         clearInterval(intervalId.current!);
         isInProgress.current = false;
       }
-    }, 100);
+    }, 120);
   };
 
   handleMouseEnter();

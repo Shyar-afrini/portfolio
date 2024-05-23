@@ -1,2 +1,3 @@
-- Truncate the tech and add show more and show less button 
 - Add sliding animations to the hero section picture
+- Include a hovering circular button fixed in the bottom right to go up to the beginning for both mobile and desktop.
+- make project info page

@@ -9,27 +9,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import NavLink from "../NavLink";
+import { GetScrollHeight } from "@/utils/getScrollHeight";
 
 const MobileNav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollHeight, setScrollHeight] = useState<number>(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollHeight(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    console.log("Scroll Y position:", scrollHeight);
-  }, [scrollHeight]);
+  GetScrollHeight(setScrollHeight);
 
   return (
     <motion.div
@@ -103,7 +89,9 @@ const SlideMenu = ({
     menuOpen && (
       <motion.div
         ref={menuRef}
-        className={`gap-8 text-5xl text-primary font-semibold bg-accent w-[90%] h-full fixed top-0 right-0 px-container ${scrollHeight > 800 ? "pt-6" : "pt-14"}`}
+        className={`gap-8 text-5xl text-primary font-semibold bg-accent w-[90%] h-full fixed top-0 right-0 px-container ${
+          scrollHeight > 800 ? "pt-6" : "pt-14"
+        }`}
         initial="closed"
         animate="open"
         exit="closed"
@@ -136,6 +124,13 @@ const SlideMenu = ({
             href="/#contacts"
             title="contacts"
           />
+          <a
+            href={"/assets/portfolio.pdf"}
+            download={"shyar-afrini.pdf"}
+            className="text-[1.4rem] bg-secondary text-text rounded-corner px-8 py-4 cursor-pointer font-[500] transition-all duration-300 ease-in-out mt-8"
+          >
+            download cv
+          </a>
         </ul>
       </motion.div>
     )

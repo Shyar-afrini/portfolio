@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const ProjectsContainer = () => {
   return (
-    <div className="w-screen h-full overflow-hidden pb-20">
+    <div id="projects" className="w-screen h-full overflow-hidden pb-20">
       <Image src={RectFade} alt="rect-fade" />
       <div className="w-full h-full px-container flex flex-col gap-6">
         <h1 className="text-title pt-12">projects</h1>

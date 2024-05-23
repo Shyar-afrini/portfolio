@@ -7,43 +7,21 @@ import youtube from "@/public/assets/youtube.svg";
 import linkedin from "@/public/assets/linkedin.svg";
 import whatsapp from "@/public/assets/whatsapp.svg";
 import facebook from "@/public/assets/facebook.svg";
-
-const SocialIcon = ({ image }: { image: StaticImageData }) => {
-  return (
-    <div className="w-14 aspect-square rounded-corner bg-secondary flex items-center justify-center p-2">
-      <Image src={image} alt={`${image}`} width={25} height={25} />
-    </div>
-  );
-};
-
-const SocialIconsGroup = ({
-  socialIcons,
-}: {
-  socialIcons: StaticImageData[];
-}) => {
-  return (
-    <div className="flex flex-wrap gap-2 items-center justify-center">
-      {socialIcons.map((icon: StaticImageData, index: number) => (
-        <SocialIcon image={icon} key={index} />
-      ))}
-    </div>
-  );
-};
+import SocialIconsGroup from "@/components/SocialIconsGroup";
 
 const ContactsContainer = () => {
   const socialIcons = [
     github,
     whatsapp,
-    youtube,
     instagram,
     linkedin,
     facebook,
   ];
 
   return (
-    <div className="w-screen h-screen bg-accent">
+    <div id="contacts" className="w-screen h-full bg-accent pb-32">
       <Image src={RectFade} alt="rect-fade" />
-      <div className="w-full h-full px-container pb-20">
+      <div className="w-full h-full px-container">
         <h1 className="text-title text-secondary font-semibold py-12">
           contacts
         </h1>

@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        "custom-xl": "5px 5px 0 0 rgba(0, 0, 0, 0.1)", // Similar to shadow-xl but without blur
+        "custom-sm": "3px 3px 0 0 rgba(0, 0, 0, 0.1)", // Similar to shadow-xl but without blur
+      },
       padding: {
         container: "6%",
       },
