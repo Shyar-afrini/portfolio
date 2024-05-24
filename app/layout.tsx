@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Teko } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Teko({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         {children}
+        <Analytics />
       </body>
     </html>
   );
