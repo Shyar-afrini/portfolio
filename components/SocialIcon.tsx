@@ -1,11 +1,22 @@
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import React from "react";
 
-const SocialIcon = ({ image }: { image: StaticImageData }) => {
+const SocialIcon = ({
+  image,
+  link,
+}: {
+  image: StaticImageData;
+  link: string;
+}) => {
   return (
-    <div className="w-14 aspect-square rounded-corner bg-secondary flex items-center justify-center p-2">
+    <Link
+      href={link}
+      target="_blank"
+      className="w-14 aspect-square rounded-corner bg-secondary flex items-center justify-center p-2 hover:-translate-y-1 hover:shadow-custom-xl transition-all duration-100 ease-in-out"
+    >
       <Image src={image} alt={`${image}`} width={25} height={25} />
-    </div>
+    </Link>
   );
 };
 

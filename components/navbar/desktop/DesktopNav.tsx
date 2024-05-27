@@ -7,8 +7,8 @@ import NavLink from "../NavLink";
 export const DownloadCV = () => {
   return (
     <a
-      href={"/assets/portfolio.pdf"}
-      download={"shyar-afrini.pdf"}
+      href={"/assets/shyar-abdalhanan.pdf"}
+      download={"shyar-abdalhanan.pdf"}
       className="text-xl bg-secondary rounded-corner px-8 py-2 cursor-pointer hover:bg-accent hover:text-primary font-[500] transition-all duration-300 ease-in-out "
     >
       download cv
