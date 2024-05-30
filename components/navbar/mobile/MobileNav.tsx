@@ -7,9 +7,17 @@ import MenuDark from "@/public/assets/menu-mobile.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  RefObject,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import NavLink from "../NavLink";
 import { GetScrollHeight } from "@/utils/getScrollHeight";
+import { handleClickOutside } from "@/utils/handleClickOutside";
 
 const MobileNav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -69,21 +77,21 @@ const SlideMenu = ({
 
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-      setMenuOpen(false);
-    }
-  };
-
   useEffect(() => {
     if (menuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("mousedown", (e) =>
+        handleClickOutside(e, menuRef, setMenuOpen)
+      );
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", (e) =>
+        handleClickOutside(e, menuRef, setMenuOpen)
+      );
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", (e) =>
+        handleClickOutside(e, menuRef, setMenuOpen)
+      );
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuOpen]);
