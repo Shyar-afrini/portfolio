@@ -18,7 +18,7 @@ import { PanelBottomClose } from "lucide-react";
 const ProjectsContainer = () => {
   const [data, setData] = useState<TContent[]>();
   const [currentTitle, setCurrentTitle] = useState("");
-  const [slideOpen, setSlideOpen] = useState(true);
+  const [slideOpen, setSlideOpen] = useState(false);
 
   useEffect(() => {
     if (slideOpen) {
