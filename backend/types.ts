@@ -15,4 +15,5 @@ export type TContent = {
     }
   ];
   link: string;
+  techstack: string[];
 };

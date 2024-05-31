@@ -12,11 +12,13 @@ import { TContent } from "@/backend/types";
 import ExpandableImage from "@/components/ExpandableImage";
 import ExternalLink from "@/public/assets/visit.svg";
 import Link from "next/link";
+import { TechGroup } from "../tech-stack-section/TechStackSection";
+import { PanelBottomClose } from "lucide-react";
 
 const ProjectsContainer = () => {
   const [data, setData] = useState<TContent[]>();
   const [currentTitle, setCurrentTitle] = useState("");
-  const [slideOpen, setSlideOpen] = useState(false);
+  const [slideOpen, setSlideOpen] = useState(true);
 
   useEffect(() => {
     if (slideOpen) {
@@ -37,8 +39,7 @@ const ProjectsContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-  }, [currentTitle]);
+  useEffect(() => {}, [currentTitle]);
 
   return (
     <div
@@ -89,6 +90,10 @@ const ProjectSlider = ({
 }) => {
   const [project, setProject] = useState<TContent>();
   const containerRef = useRef<HTMLDivElement>(null);
+  const [variants, setVariants] = useState({
+    initial: { y: 400, opacity: 0 },
+    open: { y: 80, opacity: 1 },
+  });
 
   useEffect(() => {
     const handleSlideData = () => {
@@ -119,11 +124,6 @@ const ProjectSlider = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slideOpen]);
 
-  const variants = {
-    initial: { y: 400, opacity: 0 },
-    open: { y: 80, opacity: 1 },
-  };
-
   return (
     <AnimatePresence>
       {slideOpen && (
@@ -134,7 +134,7 @@ const ProjectSlider = ({
           exit="initial"
           transition={{ duration: 0.4, ease: "backInOut" }}
           ref={containerRef}
-          className="h-[95vh] w-screen overflow-scroll fixed bottom-0 left-0 z-[45] bg-primary border-t-2 border-t-accent/50 rounded-corner p-container pb-28 flex flex-col items-center gap-4"
+          className="h-[98dvh] w-screen overflow-scroll fixed bottom-0 left-0 z-[45] bg-primary border-t-2 border-t-accent/50 rounded-corner p-container pb-32 flex flex-col items-center gap-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
             <ExpandableImage image={project?.gallery?.[0]?.url} />
@@ -158,8 +158,26 @@ const ProjectSlider = ({
             />
             {project?.link ? "visit site" : "Coming Soon!"}
           </Link>
+          <TechnologiesSection techstack={project?.techstack} />
         </motion.div>
       )}
     </AnimatePresence>
+  );
+};
+
+const TechnologiesSection = ({
+  techstack,
+}: {
+  techstack: string[] | undefined;
+}) => {
+  return (
+    <div className="w-full h-full flex flex-col gap-4 items-center justify-center">
+      <h1 className="text-title text-center leading-[50px] md:leading-normal">
+        Tools and Frameworks
+      </h1>
+      <div className="w-full h-full">
+        <TechGroup tech={techstack ? techstack : []} />
+      </div>
+    </div>
   );
 };

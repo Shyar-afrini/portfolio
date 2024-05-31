@@ -7,7 +7,7 @@ import {
   languagesAndPrograms,
 } from "@/utils/techArray";
 
-const TechStackCard = ({ title }: { title: string }) => {
+export const TechStackCard = ({ title }: { title: string }) => {
   return (
     <div className="w-fit min-w-56 py-2 px-16 flex-grow border-l-8 border-accent rounded-[4px] bg-secondary text-center text-lg border border-t-accent/60 border-b-accent/60 border-r-accent/60">
       {title}
@@ -15,7 +15,7 @@ const TechStackCard = ({ title }: { title: string }) => {
   );
 };
 
-const TechGroup = ({ tech, title }: { tech: string[]; title: string }) => {
+export const TechGroup = ({ tech, title }: { tech: string[]; title?: string }) => {
   const [expand, setExpand] = useState(false);
   const [isClient, setIsClient] = useState(false);
 

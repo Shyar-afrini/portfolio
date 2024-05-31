@@ -11,6 +11,7 @@ export const allProjects = `query Projects {
         url
       }
       link
+      techstack
     }
   }
   `;
