@@ -7,15 +7,15 @@ import TechStackSection from "@/layouts/tech-stack-section/TechStackSection";
 
 const LastSection = () => {
   return (
-    <div className="w-full h-fit py-12 bg-primary flex items-center justify-center text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ">
+    <section className="w-full h-fit pb-12 pt-6 bg-primary flex items-center justify-center text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ">
       thanks for stopping by
-    </div>
+    </section>
   );
 };
 
 const Home = () => {
   return (
-    <div className="overflow-hidden relative">
+    <main className="overflow-hidden relative">
       <HeroContainer />
       <AboutContainer />
       <ProjectsContainer />
@@ -23,7 +23,7 @@ const Home = () => {
       <ContactsContainer />
       <LastSection />
       <ArrowUpButton />
-    </div>
+    </main>
   );
 };
 

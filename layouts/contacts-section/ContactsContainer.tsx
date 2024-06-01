@@ -6,14 +6,13 @@ import linkedin from "@/public/assets/linkedin.svg";
 import RectFade from "@/public/assets/rect-fade-black.svg";
 import whatsapp from "@/public/assets/whatsapp.svg";
 import Image from "next/image";
+import Sine from "@/public/assets/sine.svg";
 
 const ContactsContainer = () => {
-  const socialIcons = [github, whatsapp, instagram, linkedin, facebook];
-
   return (
-    <div id="contacts" className="w-screen h-full bg-accent pb-32">
+    <section id="contacts" className="w-screen h-full bg-accent">
       <Image src={RectFade} alt="rect-fade" />
-      <div className="w-full h-full px-container">
+      <div className="w-full h-full px-container pb-32">
         <h1 className="text-title text-secondary font-semibold py-12">
           contacts
         </h1>
@@ -47,7 +46,8 @@ const ContactsContainer = () => {
           </div>
         </div>
       </div>
-    </div>
+      <Image src={Sine} alt="sine" className="rotate-180" />
+    </section>
   );
 };
 
