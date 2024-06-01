@@ -4,15 +4,15 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import { Analytics } from "@vercel/analytics/react";
 
-const inter = Teko({
+const teko = Teko({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Welcome to my portfolio",
+  title: "Welcome shyar afrini's portfolio",
   description:
-    "This is a web page to showcase my abilities as a web developer and a also a diverged cross platform mobile app developer and UI/UX designer",
+    "Hello, i am shyar abdalhanan this is a web page to showcase my abilities as a web developer and a also a diverged cross platform mobile app developer and UI/UX designer",
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={teko.className}>
         <Navbar />
         {children}
         <Analytics />
