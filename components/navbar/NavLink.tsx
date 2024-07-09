@@ -1,17 +1,21 @@
 "use client";
 
+import { cn } from "@/utils/cn";
 import { getRandomCharacter } from "@/utils/getRandomCharacter";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { ClassNameValue } from "tailwind-merge";
 
 const NavLink = ({
   href,
   title,
   setMenuOpen,
+  className,
 }: {
   href: string;
   title: string;
   setMenuOpen?: Dispatch<SetStateAction<boolean>>;
+  className?: ClassNameValue;
 }) => {
   const [displayText, setDisplayText] = useState(title);
   const isInProgress = useRef(false);
@@ -44,20 +48,19 @@ const NavLink = ({
   };
 
   return (
-    <li>
-      <Link
-        href={href}
-        onMouseEnter={handleMouseEnter}
-        onClick={() =>
-          setTimeout(() => {
-            setMenuOpen && setMenuOpen(false);
-          }, 500)
-        }
-        className="hover:brightness-125 transition-all duration-200 ease-in-out"
-      >
-        {displayText}
-      </Link>
-    </li>
+    <motion.a
+      className={cn("text-lg", className)}
+      href={href}
+      onMouseEnter={handleMouseEnter}
+      onClick={() =>
+        setTimeout(() => {
+          setMenuOpen && setMenuOpen(false);
+        }, 500)
+      }
+      whileHover={{ filter: "brightness(1.25)" }}
+    >
+      {displayText}
+    </motion.a>
   );
 };
 

@@ -10,9 +10,10 @@ const teko = Teko({
 });
 
 export const metadata: Metadata = {
-  title: "Welcome shyar afrini's portfolio",
+  title:
+    "Shyar Afrini's Portfolio | Web Developer, Mobile App Developer, UI/UX Designer",
   description:
-    "Hello, i am shyar abdalhanan this is a web page to showcase my abilities as a web developer and a also a diverged cross platform mobile app developer and UI/UX designer",
+    "Hello, I am Shyar Abdalhanan. This web page showcases my abilities as a web developer, cross-platform mobile app developer, and UI/UX designer.",
 };
 
 export default function RootLayout({
@@ -22,6 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://shyar-afrini.vercel.app/" />
+      </head>
       <body className={teko.className}>
         <Navbar />
         {children}

@@ -13,14 +13,14 @@ const ContactsContainer = () => {
     <section id="contacts" className="w-screen h-full bg-accent">
       <Image src={RectFade} alt="rect-fade" />
       <div className="w-full h-full px-container pb-32">
-        <h1 className="text-title text-secondary font-semibold py-12">
+        <h1 className="title py-12">
           contacts
         </h1>
         <div className="w-full h-1/2 flex flex-col gap-4 items-center justify-center">
-          <button className="bg-secondary w-full lg:w-1/2 max-w-lg h-16 rounded-corner relative">
+          <button className="bg-secondaryBackground w-full lg:w-1/2 max-w-lg h-16 rounded-corner relative">
             <a
               href="mailto:shyarafrin2@gmail.com"
-              className="absolute bottom-3 left-1/2 active:bottom-0 active:w-full -translate-x-1/2 rounded-corner w-[96%] h-full bg-accent border-[3px] border-secondary text-secondary text-3xl font-semibold flex justify-center items-center transition-all duration-300 ease-in-out"
+              className="absolute bottom-3 left-1/2 active:bottom-0 active:w-full -translate-x-1/2 rounded-corner w-[96%] h-full bg-accent border-[3px] border-secondaryBackground text-secondaryBackground text-3xl font-semibold flex justify-center items-center transition-all duration-300 ease-in-out"
             >
               email me
             </a>

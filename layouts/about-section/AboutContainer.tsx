@@ -5,7 +5,10 @@ import Globe from "@/public/assets/globe.svg";
 
 const AboutContainer = () => {
   return (
-    <div id="about" className="w-screen h-full min-h-[90vh] pb-20 bg-accent relative flex flex-col gap-12">
+    <div
+      id="about"
+      className="w-screen h-full min-h-[90vh] pb-20 bg-accent relative flex flex-col gap-12"
+    >
       <Image
         src={SineWave}
         alt="sine"
@@ -13,8 +16,8 @@ const AboutContainer = () => {
       />
       <div className="w-full h-full px-container flex gap-10 justify-between pt-[5%]">
         <div className="flex flex-col gap-4">
-          <h1 className="text-title font-semibold text-secondary">about me</h1>
-          <p className="text-secondary/90 font-normal text-paragraph leading-paragraph w-full lg:max-w-3xl text-justify">
+          <h1 className="title">about me</h1>
+          <p className="paragraph !text-primary !text-2xl !text-justify">
             I am a committed web developer with a passion for transforming
             innovative concepts into robust software solutions. With years of
             experience in front-end development, I have refined my skills in

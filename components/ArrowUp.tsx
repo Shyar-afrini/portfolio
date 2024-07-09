@@ -22,7 +22,7 @@ const ArrowUpButton = () => {
         scrollHeight > 800
           ? "bottom-4 right-4 opacity-100"
           : "-bottom-10 right-4 opacity-0"
-      } rounded-full flex items-center justify-center shadow-custom-xl active:bottom-3 active:right-3 active:shadow-custom-sm shadow-secondary border-2 border-secondary z-40 transition-all duration-300 ease-in-out cursor-pointer`}
+      } rounded-full flex items-center justify-center shadow-custom-xl active:bottom-3 active:right-3 active:shadow-custom-sm shadow-secondaryBackground border-2 border-secondaryBackground z-40 transition-all duration-300 ease-in-out cursor-pointer`}
     >
       <ArrowUp color="#121212" />
     </div>

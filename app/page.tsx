@@ -15,7 +15,7 @@ const LastSection = () => {
 
 const Home = () => {
   return (
-    <main className="overflow-hidden relative">
+    <main className="overflow-hidden">
       <HeroContainer />
       <AboutContainer />
       <ProjectsContainer />

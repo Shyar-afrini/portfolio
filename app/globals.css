@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.paragraph {
+  @apply text-secondary/80 lowercase text-lg lg:text-xl xl:text-2xl text-pretty md:w-[45vw] max-w-[700px];
+}
+
+.title {
+  @apply text-5xl font-semibold text-secondaryBackground;
+}
+
 body,
 html {
   padding: 0;

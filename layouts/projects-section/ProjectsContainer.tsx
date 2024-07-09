@@ -1,21 +1,17 @@
 "use client";
 
 import { allProjects } from "@/backend/queries";
+import { TContent } from "@/backend/types";
+import ExpandableImage from "@/components/ExpandableImage";
 import ProjectCard from "@/components/ProjectCard";
+import ChevronDown from "@/public/assets/ChevronDown.svg";
 import RectFade from "@/public/assets/rect-fade-breakpoint.svg";
+import ExternalLink from "@/public/assets/visit.svg";
 import fetchData from "@/utils/fetchData";
-import { handleClickOutside } from "@/utils/handleClickOutside";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { TContent } from "@/backend/types";
-import ExpandableImage from "@/components/ExpandableImage";
-import ExternalLink from "@/public/assets/visit.svg";
-import Link from "next/link";
 import { TechGroup } from "../tech-stack-section/TechStackSection";
-import ChevronDown from "@/public/assets/ChevronDown.svg";
-import { MinusIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 const ProjectsContainer = () => {
   const [data, setData] = useState<TContent[]>();
@@ -50,7 +46,7 @@ const ProjectsContainer = () => {
     >
       <Image src={RectFade} alt="rect-fade" />
       <div className="w-full h-full px-container flex flex-col gap-6">
-        <h1 className="text-title pt-12">projects</h1>
+        <h1 className="title !text-secondary pt-12">projects</h1>
         <div className="w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-6 xl:gap-x-8 xl:gap-y-8">
           {data?.map((project: TContent, index: number) => (
             <ProjectCard
@@ -90,13 +86,12 @@ const ProjectSlider = ({
   data: TContent[] | undefined;
   currentTitle: string;
 }) => {
-  const router = useRouter();
   const [project, setProject] = useState<TContent>();
   const containerRef = useRef<HTMLDivElement>(null);
-  const [variants, setVariants] = useState({
-    initial: { y: 400, opacity: 0 },
-    open: { y: 80, opacity: 1 },
-  });
+  const variants = {
+    initial: { y: "100%", opacity: 0 },
+    open: { y: "10%", opacity: 1 },
+  };
 
   useEffect(() => {
     const handleSlideData = () => {
@@ -107,25 +102,6 @@ const ProjectSlider = ({
     };
     handleSlideData();
   }, [currentTitle, data]);
-
-  useEffect(() => {
-    if (slideOpen) {
-      document.addEventListener("mousedown", (e) =>
-        handleClickOutside(e, containerRef, setSlideOpen)
-      );
-    } else {
-      document.removeEventListener("mousedown", (e) =>
-        handleClickOutside(e, containerRef, setSlideOpen)
-      );
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", (e) =>
-        handleClickOutside(e, containerRef, setSlideOpen)
-      );
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slideOpen]);
 
   const handleVisitButton = () => {
     if (!project?.link) return;
@@ -143,11 +119,11 @@ const ProjectSlider = ({
           exit="initial"
           transition={{ duration: 0.4, ease: "backInOut" }}
           ref={containerRef}
-          className="h-full w-screen overflow-scroll fixed bottom-0 left-0 z-[45] bg-primary border-t-2 border-t-accent/50 rounded-corner px-container pt-10 pb-32 flex flex-col items-center gap-8"
+          className="h-full min-h-screen w-full overflow-y-scroll fixed bottom-0 left-0 z-[200] bg-primary border-t-2 border-t-accent/50 rounded-corner px-container pt-10 pb-32 flex flex-col items-center gap-8"
         >
           <div
             onClick={() => setSlideOpen(false)}
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-fit aspect-square cursor-pointer"
+            className="fixed top-0 left-0 w-full h-10 bg-primary flex items-center justify-center aspect-square cursor-pointer"
           >
             <Image src={ChevronDown} alt="ChevronDown" className="w-8" />
           </div>
@@ -155,8 +131,8 @@ const ProjectSlider = ({
             <ExpandableImage image={project?.gallery?.[0]?.url} />
             <ExpandableImage image={project?.gallery?.[1]?.url} />
           </div>
-          <div className="w-full flex flex-col items-center -space-y-4">
-            <h1 className="text-title">{project?.title}</h1>
+          <div className="w-full flex flex-col items-center">
+            <h1 className="title !text-secondary">{project?.title}</h1>
             <p className="text-center w-full md:w-3/4 lg:w-1/2 text-pretty">
               {project?.description.text}
             </p>
@@ -172,7 +148,9 @@ const ProjectSlider = ({
             />
             {project?.link ? "visit site" : "Coming Soon!"}
           </button>
-          <TechnologiesSection techstack={project?.techstack} />
+          <div>
+            <TechnologiesSection techstack={project?.techstack} />
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -186,7 +164,7 @@ const TechnologiesSection = ({
 }) => {
   return (
     <div className="w-full h-full flex flex-col gap-4 items-center justify-center">
-      <h1 className="text-title text-center leading-[50px] md:leading-normal">
+      <h1 className="title !text-secondary text-center leading-[50px] md:leading-normal">
         Tools and Frameworks
       </h1>
       <div className="w-full h-full">
